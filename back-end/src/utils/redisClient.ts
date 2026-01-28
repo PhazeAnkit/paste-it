@@ -25,4 +25,14 @@ export async function closeRedis(): Promise<void> {
   }
 }
 
+export async function pingRedis(): Promise<boolean> {
+  try {
+    if (!client.isOpen) return false;
+    await client.ping();
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
 export default client;
