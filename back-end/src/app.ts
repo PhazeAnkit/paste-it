@@ -1,12 +1,10 @@
 import express from "express";
+import path from "path";
 import healthRouter from "./routes/healthCheckup";
 import pasteRoutes from "./routes/pasteRoutes";
-import path from "path";
 
-const frontendPath = path.join(__dirname, "../../front-end/dist");
 const app = express();
 
-app.use(express.static(frontendPath));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 
   app.use(express.static(frontendPath));
 
-  app.get(/.*/, (_req, res) => {
+  app.get("*", (_req, res) => {
     res.sendFile(path.join(frontendPath, "index.html"));
   });
 }
