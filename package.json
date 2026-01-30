@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install:all": "pnpm install",
     "build": "pnpm run build:frontend && pnpm run build:backend",
     "build:frontend": "pnpm --dir front-end build",
     "build:backend": "pnpm --dir back-end prisma:generate && pnpm --dir back-end build"
