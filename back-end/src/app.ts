@@ -5,6 +5,11 @@ import pasteRoutes from "./routes/pasteRoutes";
 
 const app = express();
 
+
+app.use((req,_res,next)=>{
+  console.log(req);
+  next();
+})
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
